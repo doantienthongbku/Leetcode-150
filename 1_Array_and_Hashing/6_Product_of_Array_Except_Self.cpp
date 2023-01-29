@@ -46,3 +46,26 @@ public:
         return result;
     }
 };
+
+/*
+Other approach solution: optimize the process - 4ms runtime
+*/
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+        int len = nums.size();
+        int arr1[len], arr2[len];
+        arr1[len - 1] = 1; arr2[0] = 1;
+        
+        for (int i = len - 2; i >= 0; i--)
+            arr1[i] = nums[i + 1] * arr1[i + 1];
+        for (int i = 1; i < len; i++)
+            arr2[i] = nums[i - 1] * arr2[i - 1];
+        
+        vector<int> result;
+        for (int i = 0; i < len; i++)
+            result.push_back(arr1[i] * arr2[i]);
+        
+        return result;
+    }
+};
