@@ -49,8 +49,8 @@ public:
 /*
 Solution 2: sliding window + hashmap
 Complexity analysis:
-    - Time complexity: O(n^2) - beats 71.2%
-    - Space complexity: O(1) - beats 78.6%
+    - Time complexity: O(n) - beats 71.2%
+    - Space complexity: O(n) - beats 78.6%
 */
 
 class Solution {
