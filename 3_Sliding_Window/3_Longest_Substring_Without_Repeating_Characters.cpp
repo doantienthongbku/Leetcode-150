@@ -45,3 +45,31 @@ public:
         return max_char;
     }
 };
+
+/*
+Solution 2: sliding window + hashmap
+Complexity analysis:
+    - Time complexity: O(n^2) - beats 71.2%
+    - Space complexity: O(1) - beats 78.6%
+*/
+
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        unordered_map<char, int> freq;
+        int i = 0, j = 0, len = s.size(), max_substr = 1;
+        if (len == 0) return 0;
+        while (j < len) {
+            if (freq[s[j]]) {
+                freq[s[i]]--;
+                i++;
+            } else {
+                freq[s[j]]++;
+                max_substr = max(max_substr, j - i + 1);
+                j++;
+            }
+        }
+
+        return max_substr;
+    }
+};
